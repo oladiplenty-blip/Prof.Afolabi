@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications - Prof. Olugbemiga Samuel Afolabi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1e3a5f;
+            --secondary-color: #c9a227;
+            --text-dark: #2c3e50;
+            --text-light: #5d6d7e;
+            --bg-light: #f7f9fc;
+            --white: #ffffff;
+            --accent: #3498db;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(30, 58, 95, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 600;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--secondary-color);
+        }
+
+        .nav-title {
+            color: var(--secondary-color);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 600;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 50%, #1a365d 100%) !important;
+            color: #ffffff !important;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+            color: #ffffff !important;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #ffffff !important;
+        }
+
+        .publication-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            display: block;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Category Section */
+        .category-section {
+            margin-bottom: 4rem;
+        }
+
+        .category-header {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 1.5rem;
+            border-radius: 8px 8px 0 0;
+            margin-bottom: 0;
+        }
+
+        .category-header h2 {
+            font-size: 1.5rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .category-count {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .publications-list {
+            background: var(--white);
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .publication-item {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #e2e8f0;
+            transition: background 0.3s;
+        }
+
+        .publication-item:last-child {
+            border-bottom: none;
+        }
+
+        .publication-item:hover {
+            background: #f8fafc;
+        }
+
+        .publication-number {
+            color: var(--secondary-color);
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-title {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .publication-meta {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .publication-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-style: normal;
+            transition: color 0.3s;
+        }
+
+        .publication-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* Filter/Search */
+        .filter-section {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-section label {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.2rem;
+            border: 2px solid var(--primary-color);
+            background: transparent;
+            color: var(--primary-color);
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .publication-stats {
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .publication-item {
+                padding: 1.2rem 1.5rem;
+            }
+
+            .filter-section {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <a href="./Afolabi.html" class="back-link">← Back to Portfolio</a>
+            <span class="nav-title">Publications</span>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>Complete Publications List</h1>
+        <p>A comprehensive collection of academic contributions spanning books, book chapters, monographs, and peer-reviewed journal articles</p>
+        
+        <div class="publication-stats">
+            <div class="stat">
+                <span class="stat-number">1</span>
+                <span class="stat-label">Authored Book</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">4</span>
+                <span class="stat-label">Monographs</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">16</span>
+                <span class="stat-label">Book Chapters</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">48+</span>
+                <span class="stat-label">Journal Articles</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <label>Filter by:</label>
+            <button class="filter-btn active" onclick="filterPublications('all')">All</button>
+            <button class="filter-btn" onclick="filterPublications('books')">Books</button>
+            <button class="filter-btn" onclick="filterPublications('chapters')">Book Chapters</button>
+            <button class="filter-btn" onclick="filterPublications('journals')">Journal Articles</button>
+        </div>
+
+        <!-- Books Section -->
+        <div class="category-section" data-category="books">
+            <div class="category-header">
+                <h2>📚 Authored Books <span class="category-count">1</span></h2>
+            </div>
+            <div class="publications-list">
+                <div class="publication-item">
+                    <div class="publication-number">#1</div>
+                    <div class="publication-title">Democratization and Political Values in Nigeria</div>
+                    <div class="publication-meta">Lambert Publishers: Germany</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Monographs Section -->
+        <div class="category-section" data-category="books">
+            <div class="category-header">
+                <h2>📄 Monographs <span class="category-count">4</span></h2>
+            </div>
+            <div class="publications-list">
+                <div class="publication-item">
+                    <div class="publication-number">#1</div>
+                    <div class="publication-title">Conducting Focus Group Discussion in Africa: Researching the Nexus between the State and Election Administration</div>
+                    <div class="publication-meta">SAGE Research Methods Cases. London: SAGE, 2020</div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-number">#2</div>
+                    <div class="publication-title">The State and Election Administration in Nigeria</div>
+                    <div class="publication-meta">The Nigerian Electoral Journal, Vol. 6. No 2, INEC and The Electoral Institute, Abuja. Pp 93-129, 2014</div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-number">#3</div>
+                    <div class="publication-title">The West Africa Autocratization Tracker 2020 Report</div>
+                    <div class="publication-meta">With Sigman R, Adaba K.A, Amewunou K, Beye A, Ologou E, Samson R.H. Open Society Initiative for West Africa (OSIWA) Senegal: Dakar, 2021</div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-number">#4</div>
+                    <div class="publication-title">Rights, Justice and the Challenge of Higher Education in South Africa</div>
+                    <div class="publication-meta">Monograph Series, Centre for Sexuality, Aids and Gender (CSA&G), University of Pretoria, 2019</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Book Chapters Section -->
+        <div class="category-section" data-category="chapters">
+            <div class="category-header">
+                <h2>📖 Chapters in Books <span class="category-count">16</span></h2>
+            </div>
+            <div class="publications-list">
+                <div class="publication-item">
+                    <div class="publication-number">#1</div>
+                    <div class="publication-title">Use of empirical data in research and teaching of political science in Africa</div>
+                    <div class="publication-meta">In Laakso and Zondi (Ed). Political Science in Africa: Assessing its Freedom, Relevance, Impact. Zed Book: Bloomsbury Publishing, 2024</div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-number">#2</div>
+                    <div class="publication-title">Ethnic Nationalities, Religious Fundamentalism and Federalism in Nigeria</div>
+                    <div class="publication-meta">With Omotuyi. In Bewaji and Omosulu (ed), Fragmented Identities of Nigeria: Socio-political and economic Crises, Lexington Books: Washington DC, 2022</div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-number">#3</div>
+                    <div class="publication-title">Leadership and Governance in Nigeria</div>
+                    <div class="publication-meta">With Adegbami A., Omiwole L., Ojedokun B. In: Farazmand A. (eds) Global Encyclopedia of Public Administration, Public Policy, and Governance. Springer, Cham, 2021</div>
+                    <a href="https://doi.org/10.1007/978-3-319-31816-5_4003-1" class="publication-link" target="_blank">View DOI →</a>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-number">#4</div>
+                    <div class="publication-title">An Assessment of Unethical Work Behaviour Among Police Personnel in Nigeria</div>
+                    <div class="publication-meta">With Adeyeye A and Omodunbi O. In Pittaro, M. (Ed.). Global Perspectives on Reforming the Criminal Justice System. IGI Global, 2021</div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-number">#5</div>
+                    <div class="publication-title">Cultural Narratives, Africanist Philosophy and the Question of Knowledge Production in Africa</div>
+                    <div class="publication-meta">In Omidire, F.E., Oladosu J, Fasiku G and Alumona V. Philosophy and Culture: Interrogating the Nexus. Salvador: SEGUNDO SELO, 2020</div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-number">#6</div>
+                    <div class="publication-title">Institutional Transformation and Stakeholders Engagement for Quality Management Model in African Higher Education</div>
+                    <div class="publication-meta">With Omal F. In Sony, M., Karingada, K. T., & Baporikar, N. Quality Management Implementation in Higher Education. IGI Global, 2020</div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-number">#7</div>
+                    <div class="publication-title">African Universities Quality Management Challenges vis-a-vis Higher Education Agenda</div>
+                    <div class="publication-meta">With Idowu H.A. In Sony, M., Karingada, K. T., & Baporikar, N. Quality Management Implementation in Higher Education. IGI Global, 2020</div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-number">#8</div>
+                    <div class="publication-title">Insecurity and the Feasibility of Democratic Governance in West Africa</div>
+                    <div class="publication-meta">With Idowu H.A. In Ani K and Eesuola K (ed). International Relations and Security Politics in Africa. Washington: Academica. Pp 107-140, 2019</div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-number">#9</div>
+                    <div class="publication-title">Theoretical Perspectives on Conflict Prevention</div>
+                    <div class="publication-meta">With Idowu H.A. In Dada J.P, Zhema, S and Ochoga E.O Handbook on Conflict Prevention in Nigeria. Ibadan: WISG Academic Publishers. Pp 1-21, 2019</div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-number">#10</div>
+                    <div class="publication-title">Elections, Politics, Democracy and the Challenge of Sustainable Development in Africa</div>
+                    <div class="publication-meta">In K. T. Alemu and M. A. Alebachew (eds.), Handbook of Research on Sustainable Development and Governance Strategies for Economic Growth in Africa. Pp 291-308. Hershey PA, USA: IGI Publishers, 2018</div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-number">#11</div>
+                    <div class="publication-title">Rule of Law, Governance, and Sustainable Development: The Nigerian Perspective</div>
+                    <div class="publication-meta">With Kolawole-Amao G.T., Shittu A.K. and Ogundokun O.O. In K. T. Alemu and M. A. Alebachew (eds.), Handbook of Research on Sustainable Development and Governance Strategies for Economic Growth in Africa. Pp 273-290. Hershey PA, USA: IGI Publishers, 2018</div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-number">#12</div>
+                    <div class="publication-title">Elections and Nation-Building in Nigeria: Issues, Problems and Prospects</div>
+                    <div class="publication-meta">With Usman S.A. Zango: Journal of Contemporary Issues, University of Zambia Vol.32 No 1, 2017</div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-number">#13</div>
+                    <div class="publication-title">Nigeria: Ethnic Conflict in Multinational West Africa</div>
+                    <div class="publication-meta">Encyclopaedia of Modern Ethnic Conflict, ABC-CLIO/Greenwood Publishers, Westport, USA. Pp 517-534, 2015</div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-number">#14</div>
+                    <div class="publication-title">Elections in Nigeria: Problems and Prospects</div>
+                    <div class="publication-meta">With Obiyan A.S. In A. S. Obiyan and K. Amuwo (Eds.), Nigeria's Democratic Experience in the Fourth Republic since 1999: Policies and Politics, pp 179-186. Maryland, USA: University Press of America, 2013</div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-number">#15</div>
+                    <div class="publication-title">Globalization and Cultural Revival in Africa: What has Things Fall Apart got to do with it?</div>
+                    <div class="publication-meta">With Mimiko N.O. In Anyadike C and Ayoola K, Blazing the Path: Fifty Years of Things Fall Apart. Pp 85-95. Ibadan: HEBN Publishers, 2012</div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-number">#16</div>
+                    <div class="publication-title">State, Civil Society and Democratization in Nigeria</div>
+                    <div class="publication-meta">In A.O Bamisaye and O Awofeso edited. Democracy and Democratic practice in Nigeria: Issues, Challenges and prospects. Macgrace Publishers: Lagos, 2011</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Journal Articles Section -->
+        <div class="category-section" data-category="journals">
+            <div class="category-header">
+                <h2>📝 Articles in Learned Journals <span class="category-count">48+</span></h2>
+            </div>
+            <div class="publications-list">
+                <div class="publication-item">
+                    <div class="publication-number">#1</div>
+                    <div class="publication-title">Child survival, public policy and the realization of children's rights in Nigeria</div>
+                    <div class="publication-meta">African Identities, 1–25, 2025</div>
+                    <a href="https://doi.org/10.1080/14725843.2025.2488378" class="publication-link" target="_blank">View DOI →</a>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-number">#2</div>
+                    <div class="publication-title">State Fragility and the Drivers of Insurgency in Nigeria</div>
+                    <div class="publication-meta">Strategic Review for Southern Africa 47 (forthcoming), 2025</div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-number">#3</div>
+                    <div class="publication-title">Herdsmen-Farmers Conflicts and Insecurity Narratives in Nigeria</div>
+                    <div class="publication-meta">International Journal of Governance and Development Studies 12, 2025</div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-number">#4</div>
+                    <div class="publication-title">Political Commitment and Multi-Sectoral Collaboration for Maternal Health in Oyo State, Nigeria</div>
+                    <div class="publication-meta">Ife PsychologIA, 32 (2): 46-56, 2024</div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-number">#5</div>
+                    <div class="publication-title">Multiculturalism Contested: Freedom of Religion, Human Rights and the Changing Narratives of Public Education in Nigeria</div>
+                    <div class="publication-meta">Global Journal of Social Sciences VOL 23, 2024: 337-345</div>
+                </div>
+                <div class="publication-item">
+                    <div class="publication-number">#6</div>
+                    <div class="publication-title">Leadership and Governance in Nigeria</div>
+                    <div class="publication-meta">With Adegbami A., Omiwole L., Ojedokun B. Global Encyclopedia of Public Administration, Public Policy, and Governance. Springer, Cham, 2021</div>
+                    <a href="https://doi.org/10.1007/978-3-319-31816-5_4003-1" class="publication-link" target="_blank">View DOI →</a>
+                </div>
+                <div class="publication-item" style="background: #f0f4f8; border-left: 4px solid var(--secondary-color);">
+                    <div class="publication-number" style="color: var(--primary-color); font-size: 1rem;">+ 42 More Articles</div>
+                    <div class="publication-title" style="font-size: 1rem; color: var(--text-light);">
+                        Additional peer-reviewed publications in journals including but not limited to:
+                    </div>
+                    <div class="publication-meta" style="font-style: normal; line-height: 1.8;">
+                        • African Affairs<br>
+                        • Journal of Contemporary African Studies<br>
+                        • Commonwealth & Comparative Politics<br>
+                        • Third World Quarterly<br>
+                        • African Journal of Political Science<br>
+                        • Nigerian Journal of Public Administration<br>
+                        • And many more...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Prof. Olugbemiga Samuel Afolabi. All rights reserved.</p>
+    </footer>
+
+    <!-- Filter Script -->
+    <script>
+        function filterPublications(category) {
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Show/hide categories
+            document.querySelectorAll('.category-section').forEach(section => {
+                if (category === 'all') {
+                    section.style.display = 'block';
+                } else {
+                    const sectionCategory = section.getAttribute('data-category');
+                    section.style.display = sectionCategory === category ? 'block' : 'none';
+                }
+            });
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

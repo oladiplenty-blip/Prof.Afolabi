@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prof. Olugbemiga Samuel Afolabi - Consultant & Academic</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1e3a5f;
+            --secondary-color: #c9a227;
+            --text-dark: #2c3e50;
+            --text-light: #5d6d7e;
+            --bg-light: #f7f9fc;
+            --white: #ffffff;
+            --accent: #3498db;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(30, 58, 95, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 500;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 50%, #1a365d 100%) !important;
+            color: #ffffff !important;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.03"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            animation: fadeInUp 0.8s ease;
+            color: #ffffff !important;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            margin-bottom: 1.5rem;
+            opacity: 1;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+            color: #c9a227 !important;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 1;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.8s ease 0.3s backwards;
+            color: #ffffff !important;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            transition: transform 0.3s, box-shadow 0.3s;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .cta-button.secondary:hover {
+            background: var(--white);
+            color: var(--primary-color);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section:nth-child(even) {
+            background: var(--bg-light);
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            margin-bottom: 1rem;
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-stats {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .stat-item:last-child {
+            border-bottom: none;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-top: 0.3rem;
+        }
+
+        .about-text {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--text-light);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .credentials {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .credentials h4 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .credentials ul {
+            list-style: none;
+        }
+
+        .credentials li {
+            padding: 0.4rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .credentials li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--secondary-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Experience Section */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .experience-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid var(--accent);
+        }
+
+        .experience-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .experience-org {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-year {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Publications Section */
+        .publications-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .publication-item {
+            background: var(--white);
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .publication-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        .publication-meta {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .view-more {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .view-more a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .view-more a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Affiliations Section */
+        .affiliations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .affiliation-item {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .affiliation-item:hover {
+            transform: scale(1.03);
+        }
+
+        .affiliation-item h4 {
+            color: var(--primary-color);
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-item svg {
+            width: 40px;
+            height: 40px;
+            fill: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item p {
+            color: var(--text-light);
+            word-break: break-word;
+        }
+
+        .contact-item a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Prof. Olugbemiga Samuel Afolabi</h1>
+            <p class="hero-subtitle">PROFESSOR OF POLITICAL SCIENCE | INTERNATIONAL CONSULTANT</p>
+            <p class="hero-description">
+                Distinguished academic and international consultant with expertise in governance, policy development, 
+                monitoring & evaluation, and research. Providing strategic advisory services to UNDP, UNICEF, 
+                African Union, UNODC, and other international organizations.
+            </p>
+            <div class="cta-buttons">
+                <a href="#services" class="cta-button">View Services</a>
+                <a href="#contact" class="cta-button secondary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p class="section-subtitle">Over two decades of academic excellence and international consulting experience</p>
+            
+            <div class="about-content">
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">20+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">48+</span>
+                        <span class="stat-label">Journal Publications</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">16</span>
+                        <span class="stat-label">Book Chapters</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">International Awards</span>
+                    </div>
+                </div>
+                
+                <div class="about-text">
+                    <p>
+                        I am a Professor of Political Science at Obafemi Awolowo University, Ile-Ife, Nigeria, 
+                        and currently serve as Head of Department. With a PhD in Political Science and extensive 
+                        international experience, I specialize in governance, public policy, electoral processes, 
+                        conflict prevention, and development studies.
+                    </p>
+                    <p>
+                        My consulting work spans across Africa and beyond, working with prestigious organizations 
+                        including the United Nations Development Programme (UNDP), UNICEF, African Union, UNODC, 
+                        European Union, and the Council for the Development of Social Sciences Research in Africa (CODESRIA).
+                    </p>
+                    <p>
+                        I have held visiting professorships and research fellowships at renowned institutions including 
+                        the University of Johannesburg, University of Gothenburg (Sweden), McGill University (Canada), 
+                        and the University of Zambia.
+                    </p>
+                    
+                    <div class="credentials">
+                        <h4>Academic Credentials</h4>
+                        <ul>
+                            <li>PhD Political Science - Obafemi Awolowo University (2012)</li>
+                            <li>M.Sc Political Science - Obafemi Awolowo University (2006)</li>
+                            <li>B.Sc (Hons) Political Science - Obafemi Awolowo University (1996)</li>
+                            <li>Certificate in Quality Assurance in Blended Learning - Commonwealth of Learning, London</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2>Consulting Services</h2>
+            <p class="section-subtitle">Expert advisory services for international organizations, governments, and institutions</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Monitoring & Evaluation</h3>
+                    <p>
+                        Comprehensive M&E frameworks for development projects, including impact assessments, 
+                        program evaluations, and performance monitoring systems. Experience with UNDP, AU, 
+                        and other international organizations.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📋</div>
+                    <h3>Project Management</h3>
+                    <p>
+                        End-to-end project management for governance, peacebuilding, and development initiatives. 
+                        Skilled in stakeholder coordination, resource optimization, and delivering results-oriented outcomes.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>Strategic Plan Development</h3>
+                    <p>
+                        Development of comprehensive strategic plans for institutions, organizations, and government 
+                        agencies. Focus on sustainable development goals, institutional transformation, and long-term visioning.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔬</div>
+                    <h3>Research Studies</h3>
+                    <p>
+                        Rigorous academic and policy research on governance, democracy, conflict prevention, 
+                        anti-corruption, and public administration. Qualitative and quantitative methodologies 
+                        with publication-quality outputs.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>E-Governance</h3>
+                    <p>
+                        Advisory services on digital transformation in governance, open educational resources, 
+                        and technology-enabled public service delivery. Experience with blended learning and 
+                        digital policy frameworks.
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🕊️</div>
+                    <h3>Conflict Prevention & Peacebuilding</h3>
+                    <p>
+                        Expert analysis and intervention strategies for conflict prevention, peacebuilding, 
+                        and post-conflict reconstruction. Work with UNDP on conflict analysis and community 
+                        engagement frameworks.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2>Recent Consultancies</h2>
+            <p class="section-subtitle">Selected international consulting engagements</p>
+            
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <h3>Human Rights & Access to Justice Consultant</h3>
+                    <div class="experience-org">UNDP</div>
+                    <div class="experience-year">2024</div>
+                    <p>Advisory services on human rights frameworks and justice sector reform initiatives.</p>
+                </div>
+                <div class="experience-card">
+                    <h3>Law Enforcement & Community Engagement</h3>
+                    <div class="experience-org">UNDP</div>
+                    <div class="experience-year">2024</div>
+                    <p>Facilitation of community-police relations and engagement strategies.</p>
+                </div>
+                <div class="experience-card">
+                    <h3>Multigrade Teaching Practices Consultant</h3>
+                    <div class="experience-org">UNICEF</div>
+                    <div class="experience-year">2024</div>
+                    <p>Research and evaluation of multigrade teaching methodologies in Nigeria.</p>
+                </div>
+                <div class="experience-card">
+                    <h3>Corruption & Defense Security Sector</h3>
+                    <div class="experience-org">Transparency International - Defence & Security</div>
+                    <div class="experience-year">2024</div>
+                    <p>Analysis of corruption, instability and conflict in EU, Mali, Niger and Nigeria.</p>
+                </div>
+                <div class="experience-card">
+                    <h3>Country Portfolio Evaluation</h3>
+                    <div class="experience-org">UNDP Headquarters</div>
+                    <div class="experience-year">2023</div>
+                    <p>Comprehensive evaluation of Liberia country portfolio and development outcomes.</p>
+                </div>
+                <div class="experience-card">
+                    <h3>Combatting Trafficking in Persons</h3>
+                    <div class="experience-org">UNODC</div>
+                    <div class="experience-year">2023</div>
+                    <p>Compendium development on good practices of State Taskforces in Nigeria.</p>
+                </div>
+                <div class="experience-card">
+                    <h3>State-Civil Society Partnerships</h3>
+                    <div class="experience-org">African Union</div>
+                    <div class="experience-year">2022</div>
+                    <p>Analysis of civil society engagement and partnership frameworks across Africa.</p>
+                </div>
+                <div class="experience-card">
+                    <h3>Silencing the Guns Initiative</h3>
+                    <div class="experience-org">African Union</div>
+                    <div class="experience-year">2021</div>
+                    <p>Evaluation of AU's flagship peace and security initiative for Africa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications">
+        <div class="container">
+            <h2>Selected Publications</h2>
+            <p class="section-subtitle">Recent academic contributions and research outputs</p>
+            
+            <div class="publications-list">
+                <div class="publication-item">
+                    <h4>Child Survival, Public Policy and the Realization of Children's Rights in Nigeria</h4>
+                    <p class="publication-meta">African Identities, 2025</p>
+                </div>
+                <div class="publication-item">
+                    <h4>State Fragility and the Drivers of Insurgency in Nigeria</h4>
+                    <p class="publication-meta">Strategic Review for Southern Africa, Vol. 47, 2025</p>
+                </div>
+                <div class="publication-item">
+                    <h4>Use of Empirical Data in Research and Teaching of Political Science in Africa</h4>
+                    <p class="publication-meta">In: Political Science in Africa - Zed Book/Bloomsbury Publishing, 2024</p>
+                </div>
+                <div class="publication-item">
+                    <h4>Multiculturalism Contested: Freedom of Religion, Human Rights and Public Education in Nigeria</h4>
+                    <p class="publication-meta">Global Journal of Social Sciences, Vol. 23, 2024</p>
+                </div>
+                <div class="publication-item">
+                    <h4>Leadership and Governance in Nigeria</h4>
+                    <p class="publication-meta">Global Encyclopedia of Public Administration - Springer, 2021</p>
+                </div>
+            </div>
+            
+            <div class="view-more">
+                <a href="./Publications.html">View Complete Publication List (48+ Journal Articles, 16 Book Chapters) →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Affiliations Section -->
+    <section id="affiliations">
+        <div class="container">
+            <h2>Professional Affiliations</h2>
+            <p class="section-subtitle">Member of leading academic and professional organizations</p>
+            
+            <div class="affiliations-grid">
+                <div class="affiliation-item">
+                    <h4>American Political Science Association (APSA)</h4>
+                </div>
+                <div class="affiliation-item">
+                    <h4>Midwest Political Science Association (MPSA)</h4>
+                </div>
+                <div class="affiliation-item">
+                    <h4>Nigerian Political Science Association (NPSA)</h4>
+                </div>
+                <div class="affiliation-item">
+                    <h4>CODESRIA, Senegal</h4>
+                </div>
+                <div class="affiliation-item">
+                    <h4>Institut Français de Recherche en Afrique (IFRA)</h4>
+                </div>
+                <div class="affiliation-item">
+                    <h4>Institute of Health Service Administration of Nigeria</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p class="section-subtitle">
+                Available for consulting engagements, research collaborations, and speaking opportunities
+            </p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    <h4>Email</h4>
+                    <p><a href="mailto:afolabiolugbemiga@yahoo.ca">afolabiolugbemiga@yahoo.ca</a></p>
+                    <p><a href="mailto:osafolabi@oauife.edu.ng">osafolabi@oauife.edu.ng</a></p>
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                    </svg>
+                    <h4>Phone</h4>
+                    <p>+234 (0)803 371 0504</p>
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                    <h4>Institution</h4>
+                    <p>Department of Political Science<br>Obafemi Awolowo University<br>Ile-Ife, Nigeria</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Prof. Olugbemiga Samuel Afolabi. All rights reserved.</p>
+    </footer>
+
+    <!-- Smooth Scroll Script -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
